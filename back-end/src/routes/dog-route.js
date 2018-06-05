@@ -21,6 +21,7 @@ dogRouter.post('/dogs', jsonParser, (request, response, next) => {
     .catch(next);
 });
 
+
 dogRouter.get('/dogs/:id', (request, response, next) => {
   return Dog.findById(request.params.id)
     .then((dog) => {
@@ -30,6 +31,14 @@ dogRouter.get('/dogs/:id', (request, response, next) => {
       }
       logger.log(logger.INFO, 'GET - responding with a 200 status code');
       return response.json(dog);
+    })
+    .catch(next);
+});
+
+dogRouter.get('/dogs', (request, response, next) => {
+  return Dog.find()
+    .then((dogs) => {
+      return response.json(dogs);
     })
     .catch(next);
 });

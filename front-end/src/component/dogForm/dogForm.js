@@ -4,16 +4,16 @@ import autoBind from './../../utils';
 
 const defaultState = { title: '', error: null };
 
-export default class TodoForm extends React.Component {
+export default class DogForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = props.todo ? props.todo : defaultState;
-    autoBind.call(this, TodoForm);
+    this.state = props.dog ? props.dog : defaultState;
+    autoBind.call(this, DogForm);
   }
 
   componentDidUpdate(previousProps) {
-    if (previousProps.todo !== this.props.todo) {
-      this.setState(this.props.todo);
+    if (previousProps.dog !== this.props.dog) {
+      this.setState(this.props.dog);
     }
   }
 
@@ -27,7 +27,7 @@ export default class TodoForm extends React.Component {
           this.setState(defaultState);
         })
         .catch((error) => {
-          console.error('TODO FROM ERROR: ', error);
+          console.error('DOG FORM ERROR: ', error);
           this.setState({ error });
         });
     }
@@ -42,12 +42,12 @@ export default class TodoForm extends React.Component {
     return (
       <form
       onSubmit={this.handleSubmit}
-      className="todo-form"
+      className="dog-form"
       >
       <input
       name="title"
       type="text"
-      placeholder="Enter a todo title"
+      placeholder="Enter a dog title"
       value={this.state.title}
       onChange={this.handleChange}
       />
@@ -57,8 +57,8 @@ export default class TodoForm extends React.Component {
   }
 }
 
-TodoForm.propTypes = {
+DogForm.propTypes = {
   onComplete: PropTypes.fun,
-  todo: PropTypes.object,
+  dog: PropTypes.object,
   buttonText: PropTypes.string,
 };

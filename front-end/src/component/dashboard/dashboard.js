@@ -1,30 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import TodoForm from './../todo-form/todo-form';
-import * as todoActions from '../../action/todo-actions';
+import DogForm from './../dogForm/dogForm';
+import * as dogAction from '../../action/dogAction';
 
 class Dashboard extends React.Component {
-  
   componentDidMount() {
-    this.props.todosFetch();
+    this.props.dogsFetch();
   }
 
   render() {
-    const { todos, todoCreate, todoDelete } = this.props;
+    const { dogs, dogCreate, dogUpdate, dogDelete } = this.props;
     return (
       <div className="dashboard">
-        <h2>Todo App</h2>
-        <TodoForm 
-          onComplete={todoCreate}
-          buttonText="Create Todo"
+        <h2>Dog App</h2>
+        <DogForm 
+          onComplete={dogCreate}
+          buttonText="Create Dog"
         />
         {
-          todos.map((todo) => {
+          dogs.map((dog) => {
             return (
-              <div key={todo._id}>
-                <p>{todo.title}</p>
-                <button onClick={() => todoDelete(todo)}>X</button>
+              <div key={dog._id}>
+                <p>{dog.title}</p>
+                <button onClick={() => dogDelete(dog)}>X</button>
               </div>
             );
           })
@@ -35,22 +34,22 @@ class Dashboard extends React.Component {
 }
 
 Dashboard.propTypes = {
-  todosFetch: PropTypes.func,
-  todoCreate: PropTypes.func,
-  todoDelete: PropTypes.func,
-  todos: PropTypes.array,
+  dogsFetch: PropTypes.func,
+  dogCreate: PropTypes.func,
+  dogDelete: PropTypes.func,
+  dogs: PropTypes.array,
 };
 
 const mapStateToProps = (state) => {
   return {
-    todos: state.todos,
+    dogs: state.dogs,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  todosFetch: () => dispatch(todoActions.todosFetchRequest()),
-  todoCreate: todo => dispatch(todoActions.todoCreateRequest(todo)),
-  todoDelete: todo => dispatch(todoActions.todoDeleteRequest(todo)),
+  dogsFetch: () => dispatch(dogAction.dogsFetchRequest()),
+  dogCreate: dog => dispatch(dogAction.dogCreateRequest(dog)),
+  dogDelete: dog => dispatch(dogAction.dogDeleteRequest(dog)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

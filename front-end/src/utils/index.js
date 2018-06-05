@@ -7,12 +7,12 @@ export default function autoBind(classComponent) {
   });
 }
 
-export const validateTodo = (payload) => {
+export const validateDog = (payload) => {
   if (!payload._id) {
-    throw new Error('VALIDATION ERROR: todo must have an id');
+    throw new Error('VALIDATION ERROR: dog must have an id');
   }
 
   if (!payload.title) {
-    throw new Error('VALIDATION ERROR: todo must have a title');
+    throw new Error('VALIDATION ERROR: dog must have a title');
   }
 };
