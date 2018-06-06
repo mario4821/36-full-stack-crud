@@ -10,6 +10,8 @@ const production = process.env.NODE_ENV === 'production';
 
 const webpackConfig = module.exports = {};
 
+webpackConfig.entry = `${__dirname}/src/main.js`;
+
 webpackConfig.output = {
   filename: '[name].[hash].js',
   path: `${__dirname}/build`,
@@ -18,7 +20,7 @@ webpackConfig.output = {
 
 webpackConfig.plugins = [
   new HtmlWebpackPlugin({
-    title: 'LIVE - Day 36 Async Actions',
+    title: 'POUND PUPPY ALERT',
   }),
   
   new DefinePlugin({
