@@ -31,8 +31,9 @@ class Dashboard extends React.Component {
                 <p>Breed - {dog.breed}</p>
                 <p>Age - {dog.age}</p>
                 <p>Location - {dog.location}</p>
+                <p>Details - {dog.details}</p>
                 <DogForm onComplete={dogUpdate} buttonText={'Update'} dog={dog}/>
-                <button onClick={() => dogDelete(dog)}>X</button>
+                <button className="delete" onClick={() => dogDelete(dog)}>Delete</button>
               </div>
             );
           })
