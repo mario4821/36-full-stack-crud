@@ -12,7 +12,7 @@ export const validateDog = (payload) => {
     throw new Error('VALIDATION ERROR: dog must have an id');
   }
 
-  if (!payload.title) {
+  if (!payload.firstName || !payload.location) {
     throw new Error('VALIDATION ERROR: dog must have a title');
   }
 };

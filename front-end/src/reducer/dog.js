@@ -1,4 +1,4 @@
-import { validateDog } from '../utils';
+import { validateDog } from '../utils/index';
 
 const emptyState = [];
 
@@ -11,10 +11,10 @@ export default (state = emptyState, { type, payload }) => {
       return [payload, ...state];
     case 'DOG_UPDATE':
       validateDog(payload);
-      return state.map(item => (item._id === payload._id ? payload : item));
+      return state.map(dog => (dog._id === payload._id ? payload : dog));
     case 'DOG_DELETE':
       validateDog(payload);
-      return state.filter(item => item._id !== payload._id);
+      return state.filter(dog => dog._id !== payload._id);
     default: 
       return state;
   }

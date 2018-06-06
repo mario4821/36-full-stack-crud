@@ -10,7 +10,12 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const { dogs, dogCreate, dogUpdate, dogDelete } = this.props;
+    const { 
+      dogs, 
+      dogCreate, 
+      dogUpdate, 
+      dogDelete, 
+    } = this.props;
     return (
       <div className="dashboard">
         <h2>Dog App</h2>
@@ -22,7 +27,11 @@ class Dashboard extends React.Component {
           dogs.map((dog) => {
             return (
               <div key={dog._id}>
-                <p>{dog.title}</p>
+                <p>Name - {dog.firsName}</p>
+                <p>Breed - {dog.breed}</p>
+                <p>Age - {dog.age}</p>
+                <p>Location - {dog.location}</p>
+                <DogForm onComplete={dogUpdate} buttonText={'Update'} dog={dog}/>
                 <button onClick={() => dogDelete(dog)}>X</button>
               </div>
             );
@@ -35,6 +44,7 @@ class Dashboard extends React.Component {
 
 Dashboard.propTypes = {
   dogsFetch: PropTypes.func,
+  dogUpdate: PropTypes.func,
   dogCreate: PropTypes.func,
   dogDelete: PropTypes.func,
   dogs: PropTypes.array,
@@ -48,6 +58,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
   dogsFetch: () => dispatch(dogAction.dogsFetchRequest()),
+  dogUpdate: dog => dispatch(dogAction.dogCreateRequest(dog)),
   dogCreate: dog => dispatch(dogAction.dogCreateRequest(dog)),
   dogDelete: dog => dispatch(dogAction.dogDeleteRequest(dog)),
 });
