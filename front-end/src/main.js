@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import App from './component/app/app';
-import reducer from './reducer';
+import reducer from './reducer/index';
 import thunk from './lib/redux-thunk';
 import reporter from './lib/redux-reporter';
 import session from './lib/redux-session';

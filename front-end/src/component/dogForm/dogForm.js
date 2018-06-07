@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import autoBind from './../../utils';
+import autoBind from '../../utils/index';
 
 const defaultState = { 
   firstName: '',
@@ -34,24 +34,23 @@ export default class DogForm extends React.Component {
           this.setState(defaultState);
         })
         .catch((error) => {
-          console.error('DOG FORM ERROR: ', error);
+          // console.error('DOG FORM ERROR: ', error);
           this.setState({ error });
         });
     }
   }
 
   handleChange(event) {
-    const { name, value } =
     event.preventDefault();
+    const { name, value } = event.target;
     this.setState({ [name]: value });
   }
 
   render() {
     const { buttonText } = this.props;
     return (
-      <form
+      <form className="dog-form"
       onSubmit={this.handleSubmit}
-      className="dog-form"
       >
       <input
       name="firstName"
@@ -95,7 +94,7 @@ export default class DogForm extends React.Component {
 }
 
 DogForm.propTypes = {
-  onComplete: PropTypes.fun,
+  onComplete: PropTypes.func,
   dog: PropTypes.object,
   buttonText: PropTypes.string,
 };

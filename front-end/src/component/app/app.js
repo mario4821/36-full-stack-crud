@@ -9,7 +9,7 @@ export default class App extends React.Component {
       <h1>Pound Puppy Alert</h1>
         <BrowserRouter>
           <div>
-            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/" component={Dashboard}/>
           </div>
         </BrowserRouter>
       </div>

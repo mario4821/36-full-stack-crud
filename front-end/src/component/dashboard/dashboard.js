@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import DogForm from './../dogForm/dogForm';
+import DogForm from '../dogForm/dogForm';
 import * as dogAction from '../../action/dogAction';
 
 class Dashboard extends React.Component {
@@ -18,16 +18,17 @@ class Dashboard extends React.Component {
     } = this.props;
     return (
       <div className="dashboard">
-        <h2>Dog App</h2>
-        <DogForm 
-          onComplete={dogCreate}
-          buttonText="Create Dog"
+        <h2>Pound Puppy Alert</h2>
+        <DogForm onComplete={dogCreate}
+          buttonText={'Create'}
         />
+        <div className="body">
+        <h2>Dog Availability</h2>
         {
           dogs.map((dog) => {
             return (
               <div key={dog._id}>
-                <p>Name - {dog.firsName}</p>
+                <p>Name - {dog.firstName}</p>
                 <p>Breed - {dog.breed}</p>
                 <p>Age - {dog.age}</p>
                 <p>Location - {dog.location}</p>
@@ -39,6 +40,7 @@ class Dashboard extends React.Component {
           })
         }
       </div>
+    </div>
     );
   }
 }
