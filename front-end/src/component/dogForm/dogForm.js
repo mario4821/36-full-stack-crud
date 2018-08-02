@@ -34,7 +34,7 @@ export default class DogForm extends React.Component {
           this.setState(defaultState);
         })
         .catch((error) => {
-          // console.error('DOG FORM ERROR: ', error);
+          console.error('DOG FORM ERROR: ', error);
           this.setState({ error });
         });
     }
